@@ -1,0 +1,24 @@
+<p>test-component works!</p>
+<div>
+    <form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="name" required/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" [(ngModel)]="email" required/>
+        </div>
+        <div class="form-group">
+            <label for="message">message:</label>
+            <textarea id="message" rows="4" name="message" [(ngModel)]="message" required></textarea>
+        </div>
+        <button type="submit" (click)="onSubmit()">Submit</button>
+    </form>
+
+    <div *ngIf="isSubmitted">
+        <div>
+            <app-msg-component *ngFor="let message of messages; let i = index" [message]="message" [index]="i" (delete)="deleteMessage($event)"/>
+        </div>
+    </div>
+</div>
